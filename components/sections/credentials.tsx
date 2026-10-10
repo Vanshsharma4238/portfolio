@@ -70,11 +70,21 @@ export function Credentials() {
                     <p className="text-[0.875rem] leading-snug text-fg/90">
                       {c.name}
                     </p>
-                    <p className="mt-1 text-[0.75rem] text-faint">{c.issuer}</p>
+                    {/* Rendered only when present. Some courses are recorded
+                        by title alone, and an empty line under the name reads
+                        as a missing value rather than one that was never
+                        there. */}
+                    {c.issuer ? (
+                      <p className="mt-1 text-[0.75rem] text-faint">
+                        {c.issuer}
+                      </p>
+                    ) : null}
                   </div>
-                  <span className="nums shrink-0 font-mono text-[0.68rem] text-faint">
-                    {c.year}
-                  </span>
+                  {c.year ? (
+                    <span className="nums shrink-0 font-mono text-[0.68rem] text-faint">
+                      {c.year}
+                    </span>
+                  ) : null}
                 </li>
               ))}
             </ul>

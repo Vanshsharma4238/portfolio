@@ -587,12 +587,25 @@ export const EDUCATION = [
   },
 ] as const;
 
-export const CERTIFICATIONS = [
+export type Certification = {
+  name: string;
+  /**
+   * Both optional: the resume lists some courses by title alone, and an
+   * invented issuer or year on a credential is worse than an absent one.
+   * The card omits whichever is missing rather than printing a blank line.
+   */
+  issuer?: string;
+  year?: string;
+};
+
+export const CERTIFICATIONS: readonly Certification[] = [
+  { name: "Software Architecture & Design of Modern Large Scale Systems" },
+  { name: "Software Architecture & System Design — Practical Case Studies" },
   { name: "Python for Data Science & Machine Learning", issuer: "Udemy", year: "2024" },
   { name: "Google Developer Event", issuer: "Google", year: "2024" },
   { name: "Front End Development", issuer: "Great Learning Academy", year: "2023" },
   { name: "Employability Skills", issuer: "Rubicon Foundation", year: "2022" },
-] as const;
+];
 
 export const ACHIEVEMENTS = [
   {
