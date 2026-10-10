@@ -489,17 +489,14 @@ export const SKILLS: SkillGroup[] = [
   {
     title: "Mobile",
     note: "Cross-platform apps, shipped to both stores",
-    items: [
-      "Flutter",
-      "Dart",
-      "Bloc",
-      "Provider",
-      "GetX",
-      "Android",
-      "iOS",
-      "Custom Packages",
-      "Play Store / App Store",
-    ],
+    /**
+     * Trimmed alongside the removal of the Flutter role this group was built
+     * on. What stays is what the remaining work evidences: Flutter and Dart
+     * at LiteratiTech and Butterfly, Android and iOS plus the store releases
+     * from the expense platform. Bloc and custom packages/plugins belonged to
+     * the removed role; Provider and GetX were never attached to any of it.
+     */
+    items: ["Flutter", "Dart", "Android", "iOS", "Play Store / App Store"],
   },
   {
     title: "Vision, OCR & IoT",
