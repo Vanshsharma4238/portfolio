@@ -64,26 +64,16 @@ export function Credentials() {
               {CERTIFICATIONS.map((c) => (
                 <li
                   key={c.name}
-                  className="flex items-start justify-between gap-4 bg-surface p-4 transition-colors duration-200 hover:bg-elevated"
+                  className="bg-surface p-4 transition-colors duration-200 hover:bg-elevated"
                 >
-                  <div>
-                    <p className="text-[0.875rem] leading-snug text-fg/90">
-                      {c.name}
-                    </p>
-                    {/* Rendered only when present. Some courses are recorded
-                        by title alone, and an empty line under the name reads
-                        as a missing value rather than one that was never
-                        there. */}
-                    {c.issuer ? (
-                      <p className="mt-1 text-[0.75rem] text-faint">
-                        {c.issuer}
-                      </p>
-                    ) : null}
-                  </div>
-                  {c.year ? (
-                    <span className="nums shrink-0 font-mono text-[0.68rem] text-faint">
-                      {c.year}
-                    </span>
+                  <p className="text-[0.875rem] leading-snug text-fg/90">
+                    {c.name}
+                  </p>
+                  {/* Rendered only when present. Some courses are recorded by
+                      title alone, and an empty line under the name reads as a
+                      missing value rather than one that was never there. */}
+                  {c.issuer ? (
+                    <p className="mt-1 text-[0.75rem] text-faint">{c.issuer}</p>
                   ) : null}
                 </li>
               ))}

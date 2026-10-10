@@ -590,21 +590,24 @@ export const EDUCATION = [
 export type Certification = {
   name: string;
   /**
-   * Both optional: the resume lists some courses by title alone, and an
-   * invented issuer or year on a credential is worse than an absent one.
-   * The card omits whichever is missing rather than printing a blank line.
+   * Optional: the resume lists the architecture courses by title alone, and
+   * an invented awarding body is worse than an absent one. The card omits
+   * it rather than printing a blank line under the name.
+   *
+   * There is deliberately no year here. Dating some credentials and not
+   * others drew the eye to the gap, and a course is no less held for being
+   * older, so none of them carry one.
    */
   issuer?: string;
-  year?: string;
 };
 
 export const CERTIFICATIONS: readonly Certification[] = [
   { name: "Software Architecture & Design of Modern Large Scale Systems" },
   { name: "Software Architecture & System Design — Practical Case Studies" },
-  { name: "Python for Data Science & Machine Learning", issuer: "Udemy", year: "2024" },
-  { name: "Google Developer Event", issuer: "Google", year: "2024" },
-  { name: "Front End Development", issuer: "Great Learning Academy", year: "2023" },
-  { name: "Employability Skills", issuer: "Rubicon Foundation", year: "2022" },
+  { name: "Python for Data Science & Machine Learning", issuer: "Udemy" },
+  { name: "Google Developer Event", issuer: "Google" },
+  { name: "Front End Development", issuer: "Great Learning Academy" },
+  { name: "Employability Skills", issuer: "Rubicon Foundation" },
 ];
 
 export const ACHIEVEMENTS = [
