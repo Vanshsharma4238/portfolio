@@ -197,7 +197,10 @@ export function Footer() {
             href={SITE.url}
             className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-faint transition-colors hover:text-fg"
           >
-            vanshsharma.work.gd
+            {/* Derived from the href rather than typed out. These were written
+                separately and drifted: the label still read a domain that had
+                been abandoned while the link already pointed elsewhere. */}
+            {SITE.url.replace(/^https?:\/\//, "")}
           </a>
           <a
             href="#home"
