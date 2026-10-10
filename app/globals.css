@@ -1,0 +1,225 @@
+@import "tailwindcss";
+
+/* -------------------------------------------------------------------------- */
+/*  Tokens                                                                    */
+/*                                                                            */
+/*  OLED black, one warm accent taken from the accretion disc in the hero, and */
+/*  two cool accents used only to tell sections apart. Nothing in a component  */
+/*  gets a raw hex — it all comes through here.                               */
+/* -------------------------------------------------------------------------- */
+
+@theme {
+  --color-bg: #000000;
+  --color-surface: #08080b;
+  --color-elevated: #0e0e13;
+  --color-line: #1c1c22;
+
+  --color-fg: #f4f4f5;
+  /* 7.2:1 on pure black — safe for body copy, not just labels. */
+  --color-muted: #9b9ba6;
+  --color-faint: #6b6b76;
+
+  --color-amber: #ff9838;
+  --color-amber-soft: #ffd7a8;
+  --color-cyan: #67e8f9;
+  --color-violet: #a78bfa;
+
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  /* One rhythm for every entrance in the site. */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --animate-marquee: marquee 42s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 42s linear infinite;
+  --animate-aurora: aurora 18s ease-in-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-twinkle: twinkle 4s ease-in-out infinite;
+  --animate-scan: scan 7s linear infinite;
+  --animate-pulse-ring: pulse-ring 2.6s ease-out infinite;
+}
+
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes marquee-reverse {
+  from { transform: translate3d(-50%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+@keyframes aurora {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
+  33% { transform: translate3d(6%, -4%, 0) scale(1.14); opacity: 0.8; }
+  66% { transform: translate3d(-5%, 5%, 0) scale(0.94); opacity: 0.45; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.9; }
+}
+@keyframes scan {
+  0% { transform: translateY(-110%); }
+  100% { transform: translateY(820%); }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.85); opacity: 0.7; }
+  80%, 100% { transform: scale(2.1); opacity: 0; }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Base                                                                      */
+/* -------------------------------------------------------------------------- */
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* The fixed nav is ~88px tall; anchors land below it instead of under it. */
+    scroll-padding-top: 6rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-amber);
+    color: #000;
+  }
+
+  /* A visible ring on every focused control, in the accent so it reads as ours. */
+  :focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::-webkit-scrollbar { width: 9px; height: 9px; }
+  ::-webkit-scrollbar-track { background: #000; }
+  ::-webkit-scrollbar-thumb {
+    background: #26262e;
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: #3a3a46; }
+
+  /* Tabular figures wherever a number sits in a column or counts up, so the
+     layout does not twitch as the digits change. */
+  .nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Utilities                                                                 */
+/* -------------------------------------------------------------------------- */
+
+@utility container-x {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) { padding-inline: 2.5rem; }
+  @media (width >= 80rem) { padding-inline: 3rem; }
+}
+
+/* Large display type.
+   The clamp handles width: never overflowing a 375px phone, never running
+   past 5.25rem on a wide screen. The `min()` against viewport height handles
+   the case the clamp cannot see — a short laptop window, say 1366x640, where
+   the width says 84px but three stacked lines at that size plus the copy
+   beneath them are taller than the screen, and the top of the block ends up
+   underneath the fixed nav. On anything 950px tall or more this term is
+   larger than the clamp and changes nothing. */
+@utility text-display {
+  font-family: var(--font-display);
+  font-size: min(clamp(2.25rem, 6.6vw, 5.25rem), 10.5svh);
+  line-height: 0.98;
+  letter-spacing: -0.042em;
+  font-weight: 500;
+}
+
+@utility text-section {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 5vw, 3.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+}
+
+/* The small monospace kicker that labels every section. */
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+}
+
+@utility glass {
+  background: color-mix(in oklab, var(--color-elevated) 70%, transparent);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid color-mix(in oklab, white 8%, transparent);
+}
+
+/* Text that fades from solid white into grey — used once per section at most. */
+@utility text-fade {
+  background: linear-gradient(180deg, #fff 0%, #fff 42%, #86868f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* A hairline that brightens in the middle, for section separators. */
+@utility rule-glow {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, white 14%, transparent) 50%,
+    transparent
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Motion preference                                                         */
+/*                                                                            */
+/*  Everything decorative stops. Nothing that carries meaning is hidden, so    */
+/*  the page still reads top to bottom with motion switched off.              */
+/* -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

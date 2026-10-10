@@ -1,0 +1,42 @@
+# Netlify config for the static export.
+#
+# The site is built with `STATIC_EXPORT=1 npm run build`, which emits a plain
+# `out/` folder — no Next.js adapter or serverless runtime involved, because
+# every route prerenders and there is no server code.
+
+[build]
+  command = "npm run build"
+  publish = "out"
+
+# STATIC_EXPORT belongs here rather than inline as `STATIC_EXPORT=1 npm run
+# build`: that prefix form is POSIX shell syntax, and `netlify deploy` runs
+# the build command through the host shell — which on Windows is cmd, where it
+# fails with "'STATIC_EXPORT' is not recognized". Declaring it as build
+# environment works the same on a local Windows machine and on Netlify's
+# Linux builders.
+[build.environment]
+  NODE_VERSION = "22"
+  STATIC_EXPORT = "1"
+
+# Next emits the metadata image routes as EXTENSIONLESS files — `out/opengraph-image`,
+# not `out/opengraph-image.png`. Netlify infers Content-Type from the file
+# extension, so without these headers it serves them as a generic binary
+# download and every link preview silently falls back to no image. The pages
+# are referenced as `/opengraph-image?<hash>`; the query string does not
+# affect matching.
+[[headers]]
+  for = "/opengraph-image"
+  [headers.values]
+    Content-Type = "image/png"
+
+[[headers]]
+  for = "/twitter-image"
+  [headers.values]
+    Content-Type = "image/png"
+
+# Hashed build assets are immutable — they get a new filename whenever their
+# contents change, so they can be cached indefinitely.
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

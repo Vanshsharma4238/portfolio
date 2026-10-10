@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#000"/>
+  <!-- The shadow, and the disc edge-on across it: the hero, at 64px. -->
+  <circle cx="32" cy="32" r="12" fill="#000" stroke="#FF9838" stroke-width="2"/>
+  <ellipse cx="32" cy="32" rx="23" ry="5" fill="none" stroke="#FF9838" stroke-width="3" opacity="0.85"/>
+  <ellipse cx="32" cy="32" rx="23" ry="5" fill="none" stroke="#FFF3DE" stroke-width="1" opacity="0.6"/>
+</svg>
