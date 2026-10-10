@@ -81,7 +81,7 @@ export function Nav() {
         >
           <a
             href="#home"
-            className="group flex shrink-0 items-center gap-2.5 rounded-full px-2.5 py-1.5"
+            className="group flex min-h-11 shrink-0 items-center gap-2.5 rounded-full px-2.5 py-1.5"
           >
             <span className="relative flex size-2">
               <span className="absolute inset-0 rounded-full bg-amber" />
@@ -139,7 +139,7 @@ export function Nav() {
               onClick={() => setOpen(true)}
               aria-label="Open menu"
               aria-expanded={open}
-              className="grid size-10 cursor-pointer place-items-center rounded-full border border-line text-muted transition-colors hover:text-fg md:hidden"
+              className="grid size-11 cursor-pointer place-items-center rounded-full border border-line text-muted transition-colors hover:text-fg md:hidden"
             >
               <Menu className="size-4.5" aria-hidden="true" />
             </button>
@@ -183,7 +183,7 @@ export function Nav() {
                   type="button"
                   onClick={() => setOpen(false)}
                   aria-label="Close menu"
-                  className="grid size-10 cursor-pointer place-items-center rounded-full border border-line text-muted"
+                  className="grid size-11 cursor-pointer place-items-center rounded-full border border-line text-muted"
                 >
                   <X className="size-4" aria-hidden="true" />
                 </button>

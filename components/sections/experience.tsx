@@ -128,7 +128,7 @@ function RoleEntry({ role, index }: { role: Role; index: number }) {
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
           aria-controls={panelId}
-          className="group mt-5 inline-flex cursor-pointer items-center gap-2 rounded-full border border-line px-3.5 py-2 font-mono text-[0.66rem] uppercase tracking-[0.16em] text-faint transition-colors duration-200 hover:border-white/25 hover:text-fg"
+          className="group mt-5 inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-line px-3.5 py-2 font-mono text-[0.66rem] uppercase tracking-[0.16em] text-faint transition-colors duration-200 hover:border-white/25 hover:text-fg"
         >
           {open ? (
             <Minus className="size-3" aria-hidden="true" />

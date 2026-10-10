@@ -195,7 +195,7 @@ export function Footer() {
         <div className="flex items-center gap-5">
           <a
             href={SITE.url}
-            className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-faint transition-colors hover:text-fg"
+            className="inline-flex min-h-11 items-center font-mono text-[0.7rem] uppercase tracking-[0.14em] text-faint transition-colors hover:text-fg"
           >
             {/* Derived from the href rather than typed out. These were written
                 separately and drifted: the label still read a domain that had
@@ -204,7 +204,7 @@ export function Footer() {
           </a>
           <a
             href="#home"
-            className="cursor-pointer font-mono text-[0.7rem] uppercase tracking-[0.14em] text-faint transition-colors hover:text-fg"
+            className="inline-flex min-h-11 cursor-pointer items-center font-mono text-[0.7rem] uppercase tracking-[0.14em] text-faint transition-colors hover:text-fg"
           >
             Back to top ↑
           </a>
