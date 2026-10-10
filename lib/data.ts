@@ -70,7 +70,7 @@ export const HERO = {
 } as const;
 
 export const STATS = [
-  { value: 4, suffix: "+", label: "Years building software" },
+  { value: 2, suffix: "+", label: "Years building software" },
   { value: 30, suffix: "+", label: "Technologies shipped with" },
   { value: 12, suffix: "+", label: "Products & platforms" },
   { value: 3, suffix: "×", label: "Project of the Year" },
@@ -227,24 +227,6 @@ export const EXPERIENCE: Role[] = [
       "Gemini API",
       "EasyOCR",
     ],
-  },
-  {
-    company: "Kingster636",
-    title: "Flutter Mobile Developer",
-    period: "May 2021 — Oct 2023",
-    duration: "2 yrs 6 mos",
-    location: "Remote",
-    summary:
-      "Enterprise hybrid apps for Android and iOS, with native platform integrations and release ownership.",
-    points: [
-      "Developed enterprise hybrid apps for Android and iOS in Flutter and Dart.",
-      "Implemented Bloc state management across large, multi-screen applications.",
-      "Built custom Flutter packages and plugins bridging native Android (Java / Kotlin) and iOS (Swift).",
-      "Integrated REST services with JSON/XML serialisation and secure API communication.",
-      "Managed CI/CD pipelines, app signing, versioning and Play Store / App Store releases.",
-      "Worked in Agile/Scrum teams with designers, backend developers and QA.",
-    ],
-    stack: ["Flutter", "Dart", "Bloc", "Kotlin", "Swift", "REST APIs", "CI/CD"],
   },
 ];
 
@@ -506,7 +488,7 @@ export const SKILLS: SkillGroup[] = [
   },
   {
     title: "Mobile",
-    note: "Three years of Flutter, shipped to stores",
+    note: "Cross-platform apps, shipped to both stores",
     items: [
       "Flutter",
       "Dart",

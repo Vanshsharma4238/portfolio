@@ -41,7 +41,7 @@ export function Experience() {
         <SectionHeading
           index="02"
           kicker="Experience"
-          title={<RevealWords text="Four companies, one throughline." />}
+          title={<RevealWords text="Three companies, one throughline." />}
           lead="From Flutter apps in stores to Rust data cores and agent orchestration — each role added a layer rather than replacing the last."
         />
 
