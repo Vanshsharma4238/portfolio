@@ -7,7 +7,13 @@
 
 export const SITE = {
   name: "Vansh Sharma",
-  url: "https://vanshsharma.work.gd",
+  // Canonical origin — feeds metadataBase, the Open Graph tags and the
+  // JSON-LD. Moved off vanshsharma.work.gd: that name can never be verified
+  // on Vercel, because work.gd is absent from the Public Suffix List, so
+  // Vercel treats work.gd as the apex and looks for the ownership record in
+  // DNSExit's zone rather than ours. is-a.dev is on the list, which makes
+  // this subdomain its own apex and the check one we can satisfy.
+  url: "https://vanshsharma.is-a.dev",
   role: "Software Engineer — AI Automation & Agentic AI",
   shortRole: "AI & Full-Stack Engineer",
   tagline: "I build systems that think.",
