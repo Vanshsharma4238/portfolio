@@ -17,15 +17,20 @@ export default function Page() {
       <Intro />
       <ScrollProgress />
       <CursorGlow />
-      <Nav />
-
-      {/* Keyboard users land here first and can jump the nav and the hero. */}
+      {/* Keyboard users land here first and can jump the nav and the hero.
+          It has to precede <Nav> in the DOM to do that: focus order follows
+          the document, so a skip link placed after the thing it skips is
+          reached only once you have already tabbed through all of it. The
+          elements above are inert — the intro curtain and the two pointer
+          overlays are all aria-hidden and hold nothing focusable. */}
       <a
         href="#about"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-fg focus:px-5 focus:py-3 focus:text-sm focus:font-medium focus:text-black"
       >
         Skip to content
       </a>
+
+      <Nav />
 
       <main id="main">
         <Hero />
