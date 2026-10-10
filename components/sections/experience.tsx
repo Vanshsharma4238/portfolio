@@ -12,6 +12,25 @@ import { EXPERIENCE, type Role } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 /**
+ * Spelled-out counts for the section heading.
+ *
+ * The heading used to carry the number as literal text, and it was wrong in
+ * both directions over time — it read "Four" while five roles were listed,
+ * then "Three" against four. Counting the array instead means adding or
+ * removing a role can no longer leave the sentence lying.
+ */
+const COUNT_WORDS: Record<number, string> = {
+  1: "One",
+  2: "Two",
+  3: "Three",
+  4: "Four",
+  5: "Five",
+  6: "Six",
+  7: "Seven",
+  8: "Eight",
+};
+
+/**
  * The timeline.
  *
  * A rail runs down the left with a lit section that tracks how far through the
@@ -41,7 +60,11 @@ export function Experience() {
         <SectionHeading
           index="02"
           kicker="Experience"
-          title={<RevealWords text="Three companies, one throughline." />}
+          title={
+            <RevealWords
+              text={`${COUNT_WORDS[EXPERIENCE.length] ?? EXPERIENCE.length} companies, one throughline.`}
+            />
+          }
           lead="From Flutter apps in stores to Rust data cores and agent orchestration — each role added a layer rather than replacing the last."
         />
 

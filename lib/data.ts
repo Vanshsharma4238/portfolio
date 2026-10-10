@@ -29,6 +29,7 @@ export const SITE = {
   phone: "+91 98377 74238",
   phoneHref: "+919837774238",
   linkedin: "https://www.linkedin.com/in/vansh-sharma-vs4238/",
+  resume: "/Vansh-Sharma-Resume.pdf",
   available: true,
 } as const;
 
@@ -620,4 +621,5 @@ export const SOCIALS = [
   { label: "LinkedIn", href: SITE.linkedin, handle: "/in/vansh-sharma-vs4238" },
   { label: "Email", href: `mailto:${SITE.email}`, handle: SITE.email },
   { label: "Phone", href: `tel:${SITE.phoneHref}`, handle: SITE.phone },
+  { label: "Résumé", href: SITE.resume, handle: "Download PDF" },
 ] as const;
