@@ -7,13 +7,20 @@
 
 export const SITE = {
   name: "Vansh Sharma",
-  // Canonical origin — feeds metadataBase, the Open Graph tags and the
-  // JSON-LD. Moved off vanshsharma.work.gd: that name can never be verified
-  // on Vercel, because work.gd is absent from the Public Suffix List, so
-  // Vercel treats work.gd as the apex and looks for the ownership record in
-  // DNSExit's zone rather than ours. is-a.dev is on the list, which makes
-  // this subdomain its own apex and the check one we can satisfy.
-  url: "https://vanshsharma.is-a.dev",
+  /**
+   * Canonical origin — feeds metadataBase, the Open Graph tags and the
+   * JSON-LD. It has to be a host that actually resolves: these URLs are what
+   * LinkedIn, Slack and iMessage fetch the preview card from, and pointing
+   * them at a name with no DNS silently yields a preview with no image.
+   *
+   * The intended home is vanshsharma.is-a.dev. It is not here yet — is-a.dev
+   * suspended new registrations on 2026-10-08 — so this stays on the Vercel
+   * host until that domain resolves. The old vanshsharma.work.gd is ruled out
+   * permanently: work.gd is absent from the Public Suffix List, so Vercel
+   * treats work.gd as the apex and looks for the ownership record in
+   * DNSExit's zone rather than ours.
+   */
+  url: "https://portfolio-gamma-puce-62.vercel.app",
   role: "Software Engineer — AI Automation & Agentic AI",
   shortRole: "AI & Full-Stack Engineer",
   tagline: "I build systems that think.",
